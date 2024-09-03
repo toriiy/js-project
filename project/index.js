@@ -17,8 +17,14 @@ fetch('https://jsonplaceholder.typicode.com/users')
             button.innerText = 'More info...';
 
             button.onclick = function () {
-                open('user-details.html');
+                let clicked = JSON.parse(localStorage.getItem('clicked')) || [];
+                clicked.push(user);
+                localStorage.setItem('clicked', JSON.stringify(clicked));
             }
+
+            button.addEventListener('click', function () {
+                open('user-details.html');
+            });
 
             div.append(h3, p, button);
         }
