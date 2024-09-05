@@ -1,4 +1,4 @@
-let clickedArr = JSON.parse(localStorage.getItem('clicked'));
+let clickedArr = JSON.parse(localStorage.getItem('user'));
 console.log(clickedArr);
 
 let lastObj = clickedArr[clickedArr.length - 1];
@@ -7,67 +7,44 @@ console.log(lastObj);
 let div = document.createElement('div');
 document.body.appendChild(div);
 
-let h3 = document.createElement('h3');
-h3.innerText = `Id: ${lastObj.id}`;
+for (const key in lastObj) {
+    if (typeof lastObj[key] === 'object') {
+        let innerDiv = document.createElement('div');
+        div.appendChild(innerDiv);
 
-let name = document.createElement('p');
-name.innerText = lastObj.name;
+        let h3 = document.createElement('h3');
+        h3.innerText = `${key}:`;
+        innerDiv.appendChild(h3)
 
-let username = document.createElement('p');
-username.innerText = `Username: ${lastObj.username}`;
+        const obj = lastObj[key];
+        for (const objKey in obj) {
+            if (typeof obj[objKey] !== 'object') {
+                let pObj = document.createElement('p');
+                pObj.innerText = `${objKey}: ${obj[objKey]}`;
+                innerDiv.appendChild(pObj);
+            } else {
+                let innerBlock = document.createElement('div');
+                innerDiv.appendChild(innerBlock);
 
-let email = document.createElement('p');
-email.innerText = `Email: ${lastObj.email}`;
+                let h4 = document.createElement('h4');
+                h4.innerText = `${objKey}:`;
+                innerBlock.appendChild(h4);
 
-let phone = document.createElement('p');
-phone.innerText = `Phone number: ${lastObj.phone}`;
+                const objInner = obj[objKey];
+                for (const objInnerKey in objInner) {
+                    let pInnerObj = document.createElement('p');
+                    pInnerObj.innerText = `${objInnerKey}: ${objInner[objInnerKey]}`;
+                    innerBlock.appendChild(pInnerObj);
+                }
+            }
+        }
 
-let website = document.createElement('p');
-website.innerText = `Website: ${lastObj.website}`;
-
-let h3Address = document.createElement('h3');
-h3Address.innerText = 'Address:';
-
-let {address} = lastObj;
-
-let street = document.createElement('p');
-street.innerText = `${address.street} street`;
-
-let suite = document.createElement('p');
-suite.innerText = address.suite;
-
-let city = document.createElement('p');
-city.innerText = `City: ${address.city}`;
-
-let zipcode = document.createElement('p');
-zipcode.innerText = `Zipcode: ${address.zipcode}`;
-
-let h3Geo = document.createElement('h3');
-h3Geo.innerText = 'Geo:';
-
-let {geo} = address;
-
-let lat = document.createElement('p');
-lat.innerText = `Lat: ${geo.lat}`;
-
-let lng = document.createElement('p');
-lng.innerText = `Lng: ${geo.lng}`;
-
-let h3Company = document.createElement('h3');
-h3Company.innerText = 'Company:';
-
-let {company} = lastObj;
-
-let companyName = document.createElement('p');
-companyName.innerText = `Name: ${company.name}`;
-
-let catchPhrase = document.createElement('p');
-catchPhrase.innerText = `Catch phrase: ${company.catchPhrase}`;
-
-let bs = document.createElement('p');
-bs.innerText = `Bs: ${company.bs}`;
-
-div.append(h3, name, username, email, phone, website, h3Address, street, suite, city, zipcode, h3Geo, lat, lng, h3Company, companyName, catchPhrase, bs);
+    } else {
+        let p = document.createElement('p');
+        p.innerText = `${key}: ${lastObj[key]}`;
+        div.appendChild(p);
+    }
+}
 
 let button = document.createElement('button');
 button.innerText = 'post of current user';
@@ -98,7 +75,7 @@ button.onclick = function () {
                 }
 
                 btn.addEventListener('click', function () {
-                    open('post-details.html');
+                    window.location = 'post-details.html';
                 });
             }
         });
