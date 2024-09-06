@@ -5,6 +5,7 @@ let lastObj = clickedArr[clickedArr.length - 1];
 console.log(lastObj);
 
 let div = document.createElement('div');
+div.classList.add('user-block');
 document.body.appendChild(div);
 
 for (const key in lastObj) {
@@ -14,6 +15,7 @@ for (const key in lastObj) {
 
         let h3 = document.createElement('h3');
         h3.innerText = `${key}:`;
+        h3.classList.add('heading-capital-letter')
         innerDiv.appendChild(h3)
 
         const obj = lastObj[key];
@@ -24,10 +26,12 @@ for (const key in lastObj) {
                 innerDiv.appendChild(pObj);
             } else {
                 let innerBlock = document.createElement('div');
+                innerBlock.classList.add('inner-block');
                 innerDiv.appendChild(innerBlock);
 
                 let h4 = document.createElement('h4');
                 h4.innerText = `${objKey}:`;
+                h4.classList.add('heading-capital-letter')
                 innerBlock.appendChild(h4);
 
                 const objInner = obj[objKey];
@@ -47,26 +51,27 @@ for (const key in lastObj) {
 }
 
 let button = document.createElement('button');
+button.classList.add('posts-button-center');
 button.innerText = 'post of current user';
 
 let divPosts = document.createElement('div');
+divPosts.classList.add('post-title-block');
 document.body.append(button, divPosts);
 
 button.onclick = function () {
     fetch('https://jsonplaceholder.typicode.com/posts?userId=' + lastObj.id)
         .then(res => res.json())
         .then(posts => {
-            let h3 = document.createElement('h3');
-            h3.innerText = 'Posts titles:';
-            divPosts.appendChild(h3);
 
             for (const post of posts) {
+                let divPostBlock = document.createElement('div');
+                divPosts.appendChild(divPostBlock);
                 let h4 = document.createElement('h4');
-                h4.innerText = post.title;
+                h4.innerText = `Title: ${post.title}`;
                 let btn = document.createElement('button');
                 btn.innerText = 'more...';
 
-                divPosts.append(h4, btn);
+                divPostBlock.append(h4, btn);
 
                 btn.onclick = function () {
                     let currentPost = JSON.parse(localStorage.getItem('post')) || [];
