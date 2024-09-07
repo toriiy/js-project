@@ -8,6 +8,10 @@ let div = document.createElement('div');
 div.classList.add('user-block');
 document.body.appendChild(div);
 
+let h2 = document.createElement('h2');
+h2.innerText = 'User:';
+div.appendChild(h2);
+
 for (const key in lastObj) {
     if (typeof lastObj[key] === 'object') {
         let innerDiv = document.createElement('div');
@@ -15,8 +19,8 @@ for (const key in lastObj) {
 
         let h3 = document.createElement('h3');
         h3.innerText = `${key}:`;
-        h3.classList.add('heading-capital-letter')
-        innerDiv.appendChild(h3)
+        h3.classList.add('heading-capital-letter');
+        innerDiv.appendChild(h3);
 
         const obj = lastObj[key];
         for (const objKey in obj) {
@@ -31,7 +35,7 @@ for (const key in lastObj) {
 
                 let h4 = document.createElement('h4');
                 h4.innerText = `${objKey}:`;
-                h4.classList.add('heading-capital-letter')
+                h4.classList.add('heading-capital-letter');
                 innerBlock.appendChild(h4);
 
                 const objInner = obj[objKey];

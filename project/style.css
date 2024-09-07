@@ -6,12 +6,23 @@
 
 /*INDEX*/
 
+#wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+#wrap h2 {
+    font-size: 32px;
+}
+
 #main-block {
     height: 100vh;
-    width: 55px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
+    font-size: 23px;
 }
 
 #main-block div {
@@ -19,8 +30,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 250px;
-    width: 300px;
+    height: 300px;
+    width: 350px;
     gap: 25px;
     background-color: whitesmoke;
     border: 1px solid #353535;
@@ -31,6 +42,7 @@
     border: 1px solid #676767;
     padding: 7px;
     color: white;
+    font-size: 20px;
 }
 
 #main-block div button:hover {
@@ -42,11 +54,21 @@
 
 .user-block {
     width: 370px;
-    height: 430px;
+    height: 600px;
     background-color: aliceblue;
     padding: 20px;
     margin-bottom: 25px;
     border: 1px solid #4e4e4e;
+}
+
+.user-block p {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.user-block h2 {
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .user-block div {
@@ -68,7 +90,7 @@
     display: block;
     background-color: #a9c4c5;
     border: 1px solid gray;
-
+    font-size: 17px;
 }
 
 .posts-button-center:hover {
@@ -94,12 +116,14 @@
     align-items: center;
     gap: 15px;
     border: 1px solid gray;
+    font-size: 19px;
 }
 
 .post-title-block div button {
     background-color: #b4ecec;
     padding: 5px 10px;
     border: 1px solid #4a4a4a;
+    font-size: 16px;
 }
 
 .post-title-block div button:hover {
@@ -111,15 +135,26 @@
 
 .post-block {
     background-color: beige;
-    height: 220px;
+    max-height: 345px;
     width: 350px;
     padding: 20px;
     margin-bottom: 25px;
     border: 1px solid #4a4a4a;
 }
 
+.post-block h2 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.post-block p {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
 .heading-center {
     text-align: center;
+    font-size: 24px;
 }
 
 .comments-block {
@@ -134,6 +169,11 @@
     background-color: #fbf2e5;
     padding: 15px;
     border: 1px solid #353535;
+    font-size: 20px;
+}
+
+.comments-block div p {
+    margin-bottom: 5px;
 }
 
 

@@ -7,6 +7,10 @@ let div = document.createElement('div');
 div.classList.add('post-block');
 document.body.appendChild(div);
 
+let h2 = document.createElement('h2');
+h2.innerText = 'Post:';
+div.appendChild(h2);
+
 for (const key in lastObj) {
     let p = document.createElement('p');
     p.innerText = `${key}: ${lastObj[key]}`;
