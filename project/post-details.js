@@ -1,5 +1,6 @@
 let posts = JSON.parse(localStorage.getItem('post'));
 console.log(posts);
+
 let lastObj = posts[posts.length - 1];
 console.log(lastObj);
 
